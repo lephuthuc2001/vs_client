@@ -4,7 +4,7 @@ import useProductStore from "../store/product";
 import lodash from "lodash";
 
 const categories = Object.values(
-  import.meta.glob("../assets/*.svg", { eager: true })
+  import.meta.glob("../img/*.svg", { eager: true })
 ).map(function (category) {
   const newCate = {
     imgSrc: category.default,
