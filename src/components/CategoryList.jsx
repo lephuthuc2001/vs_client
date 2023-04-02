@@ -8,7 +8,7 @@ const categories = Object.values(
 ).map(function (category) {
   const newCate = {
     imgSrc: category.default,
-    name: category.default.substring(9).split(".")[0],
+    name: category.default.split("/").pop().replace(".svg", ""),
   };
   return newCate;
 });
