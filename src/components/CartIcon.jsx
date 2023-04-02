@@ -1,8 +1,9 @@
 import React from "react";
 import useCartStore from "../store/cart";
 function CartIcon() {
-  const totalQuantity = useCartStore((state) => state.cart.totalQuantity);
+  const cart = useCartStore((state) => state.cart);
 
+  const totalQuantity = cart?.totalQuantity;
   return (
     <label
       tabIndex={0}
