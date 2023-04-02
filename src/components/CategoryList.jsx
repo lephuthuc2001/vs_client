@@ -6,9 +6,15 @@ import lodash from "lodash";
 const categories = Object.values(
   import.meta.glob("../img/*.svg", { eager: true })
 ).map(function (category) {
+  let name = category.default.split("/").pop().replace(".svg", "");
+
+  if (name.includes("-")) {
+    name = name.split("-")[0];
+  }
+
   const newCate = {
     imgSrc: category.default,
-    name: category.default.split("/").pop().replace(".svg", ""),
+    name,
   };
   return newCate;
 });
