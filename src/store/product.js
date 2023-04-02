@@ -44,17 +44,13 @@ const useProductStore = create((set) => ({
               ? state.currentProductPerPage
               : 8;
           state.currentCategory = category || query || "All";
+          state.isLoading = false;
         })
       );
     } catch (error) {
       set(
         produce((state) => {
           state.error = error;
-        })
-      );
-    } finally {
-      set(
-        produce((state) => {
           state.isLoading = false;
         })
       );

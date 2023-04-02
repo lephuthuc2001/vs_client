@@ -16,13 +16,11 @@ function ProductCard({ title, description, imgSrc, price, id }) {
 
   const isInCart = lodash.find(items, { productId: id });
 
-  console.log(totalQuantity, totalPrice);
   return (
     <a
       className="w-72 h-auto cursor-pointer group flex flex-col border shadow-sm rounded-xl overflow-hidden hover:shadow-lg transition "
       onClick={(e) => {
         const target = lodash.lowerCase(e.target.tagName);
-        console.log(target);
         if (target !== "button" && target !== "svg" && target !== "path") {
           navigate(`/products/${id}`, {
             state: { title, description, price, imgSrc },
@@ -40,7 +38,9 @@ function ProductCard({ title, description, imgSrc, price, id }) {
       <div className="p-4 md:p-5">
         <div className="flex flex-row justify-between align-baseline">
           {" "}
-          <h3 className="text-base">{title}</h3>
+          <h3 className="text-base overflow-hidden">
+            {lodash.truncate(title, { length: 30 })}
+          </h3>
         </div>
         <div className="mt-2 flex flex-row justify-between items-center">
           <p className="font-bold">

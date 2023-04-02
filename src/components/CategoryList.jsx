@@ -8,12 +8,13 @@ const categories = Object.values(
 ).map(function (category) {
   const newCate = {
     imgSrc: category.default,
-    name: category.default.substring(12).split(".")[0],
+    name: category.default.substring(9).split(".")[0],
   };
   return newCate;
 });
 
 function CategoryList() {
+  console.log(categories);
   const currentCategory = useProductStore((state) => state.currentCategory);
 
   const getProducts = useProductStore((state) => state.getProducts);

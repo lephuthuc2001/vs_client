@@ -13,6 +13,7 @@ function ProductList() {
   } = useProductStore();
 
   const isProductsLeft = products.length > currentProductPerPage;
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -20,6 +21,7 @@ function ProductList() {
   const loadMoreHandler = () => {
     updateCurrentProductPerPage(currentProductPerPage + 8);
   };
+
   return (
     <div className="flex flex-col gap-2 m-2">
       {" "}
