@@ -41,7 +41,7 @@ export const AuthContext = createContext();
 function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // const getCart = useCartStore((state) => state.getCart);
+  const getCart = useCartStore((state) => state.getCart);
 
   useEffect(() => {
     async function init() {
@@ -49,15 +49,13 @@ function AuthProvider({ children }) {
         const token = localStorage.getItem("token");
 
         if (token) {
-          const { _id } = jwt_decode(token);
-
           const response = await apiService.get("users/me");
 
           const { user, accessToken } = response.data.data;
 
           dispatch({ type: "init", payload: { user, isAuthenticated: true } });
 
-          // await getCart(user._id);
+          await getCart(user._id);
 
           window.localStorage.setItem("token", accessToken);
           window.localStorage.setItem("user", JSON.stringify(user));

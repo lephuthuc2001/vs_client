@@ -18,6 +18,7 @@ function CategoryList() {
   const currentCategory = useProductStore((state) => state.currentCategory);
 
   const getProducts = useProductStore((state) => state.getProducts);
+
   const isActive = lodash.lowerCase(currentCategory) === "all";
 
   const active =

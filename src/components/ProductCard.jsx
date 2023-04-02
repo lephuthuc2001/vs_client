@@ -10,11 +10,9 @@ function ProductCard({ title, description, imgSrc, price, id }) {
 
   const addToCart = useCartStore((state) => state.addToCart);
 
-  const { items, totalQuantity, totalPrice } = useCartStore(
-    (state) => state.cart
-  );
+  const cart = useCartStore((state) => state.cart);
 
-  const isInCart = lodash.find(items, { productId: id });
+  const isInCart = cart ? lodash.find(cart.items, { productId: id }) : false;
 
   return (
     <a
